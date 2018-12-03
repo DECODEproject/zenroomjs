@@ -1,0 +1,19 @@
+{
+  "name": "zenroomjs",
+  "version": "0.8.1",
+  "description": "wasm wrapper of zenroom, a secure and small virtual machine for crypto language processing",
+  "main": "index.js",
+  "repository": "https://github.com/puria/zenroomjs.git",
+  "author": "Puria Nafisi Azizi <puria@dyne.org>",
+  "license": "Apache-2.0",
+  "scripts": {
+    "clean": "rimraf src/lib && cd zenroom && make clean",
+    "compile": "cd zenroom && make javascript-npm",
+    "pretranspile": "yarn compile && mkdir -p src/lib && cp -v zenroom/build/npm/z* src/lib && mkdir dist",
+    "transpile": "buble -i src -o dist"
+  },
+  "devDependencies": {
+    "buble": "^0.19.6",
+    "rimraf": "^2.6.2"
+  }
+}
