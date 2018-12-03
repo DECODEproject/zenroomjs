@@ -14,4 +14,14 @@
  * limitations under the License.
  */
 
-module.exports = require('./dist/wrapper')
+import C from './lib/zenroom';
+
+const zenroom_exec = (zencode, conf=null, keys=null, data=null, verbosity=1) => {
+    return C.ccall('zenroom_exec', 'number',
+                   ['string', 'string', 'string', 'string', 'number'],
+                   [ zencode,  conf,     keys,     data,     verbosity])
+}
+
+module.exports = {
+    zenroom_exec
+}
