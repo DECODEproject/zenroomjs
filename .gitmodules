@@ -1,0 +1,3 @@
+[submodule "zenroom"]
+	path = zenroom
+	url = https://github.com/DECODEproject/zenroom
