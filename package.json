@@ -11,7 +11,8 @@
     "build": "cd zenroom && make javascript-node",
     "pretranspile": "yarn build && mkdirp src/lib && mkdirp dist/lib && cp -v zenroom/build/nodejs/z* dist/lib",
     "transpile": "babel src -d dist",
-    "prepublish": "yarn transpile"
+    "prepublish": "yarn transpile",
+    "test": "nyc mocha"
   },
   "files": [
     "dist"
@@ -20,9 +21,25 @@
     "@babel/cli": "^7.2.0",
     "@babel/core": "^7.2.0",
     "@babel/preset-env": "^7.2.0",
+    "babel-plugin-istanbul": "^5.1.0",
     "babel-polyfill": "^6.26.0",
     "mkdirp": "^0.5.1",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
     "rimraf": "^2.6.2"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "nyc": {
+    "check-coverage": true,
+    "per-file": true,
+    "lines": 99,
+    "cache": true,
+    "all": true,
+    "include": [
+      "src/**/*.js"
+    ],
+    "exclude": [
+      "dist/"
+    ]
+  }
 }

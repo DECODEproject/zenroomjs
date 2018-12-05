@@ -84,7 +84,7 @@ const zenroom = (function() {
   }
 
   const _setup = function() {
-    print(self.print || (text => console.log(text)))
+    print(self.print || (text => console.log(text)))    
     success(self.success || (() => {}))
   }
 
