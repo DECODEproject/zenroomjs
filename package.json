@@ -8,15 +8,21 @@
   "license": "Apache-2.0",
   "scripts": {
     "clean": "rimraf src/lib && rimraf dist && cd zenroom && make clean",
-    "build": "cd zenroom && make javascript-npm",
-    "pretranspile": "yarn build && mkdirp src/lib && cp -v zenroom/build/npm/z* src/lib && mkdirp dist",
+    "build": "cd zenroom && make javascript-node",
+    "pretranspile": "yarn build && mkdirp src/lib && mkdirp dist/lib && cp -v zenroom/build/nodejs/z* dist/lib",
     "transpile": "babel src -d dist",
     "prepublish": "yarn transpile"
   },
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "babel-polyfill": "^6.26.0",
     "mkdirp": "^0.5.1",
     "rimraf": "^2.6.2"
-  }
+  },
+  "dependencies": {}
 }
