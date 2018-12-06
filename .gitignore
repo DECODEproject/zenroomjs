@@ -1,5 +1,4 @@
 src/lib
-dist/
 # Logs
 logs
 *.log

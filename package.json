@@ -7,12 +7,15 @@
   "author": "Puria Nafisi Azizi <puria@dyne.org>",
   "license": "Apache-2.0",
   "scripts": {
-    "clean": "rimraf src/lib && rimraf dist && cd zenroom && make clean",
+    "lint": "eslint src/*",
     "build": "cd zenroom && make javascript-node",
-    "pretranspile": "yarn build && mkdirp src/lib && mkdirp dist/lib && cp -v zenroom/build/nodejs/z* dist/lib",
+    "clean": "rimraf dist/lib && cd zenroom && make clean",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "pretranspile": "yarn build && mkdirp dist/lib && cp -v zenroom/build/nodejs/z* dist/lib",
     "transpile": "babel src -d dist",
-    "prepublish": "yarn transpile",
-    "test": "nyc mocha"
+    "prepublish": "yarn test",
+    "test": "nyc --require @babel/register --require @babel/polyfill mocha",
+    "test:watch": "yarn test --watch"
   },
   "files": [
     "dist"
@@ -21,25 +24,37 @@
     "@babel/cli": "^7.2.0",
     "@babel/core": "^7.2.0",
     "@babel/preset-env": "^7.2.0",
+    "@babel/register": "^7.0.0",
     "babel-plugin-istanbul": "^5.1.0",
-    "babel-polyfill": "^6.26.0",
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.2",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
     "mkdirp": "^0.5.1",
     "mocha": "^5.2.0",
     "nyc": "^13.1.0",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "sinon": "^7.1.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0"
+  },
   "nyc": {
     "check-coverage": true,
     "per-file": true,
     "lines": 99,
+    "statements": 98,
+    "functions": 99,
+    "branches": 99,
     "cache": true,
     "all": true,
     "include": [
       "src/**/*.js"
     ],
     "exclude": [
-      "dist/"
+      "dist",
+      "zenroom"
     ]
   }
 }

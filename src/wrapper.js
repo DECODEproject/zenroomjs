@@ -1,12 +1,12 @@
 /*
  * Copyright 2018 Dyne.org foundation, Amsterdam
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-import 'babel-polyfill';
-import C from "./lib/zenroom"
+import '@babel/polyfill';
+import C from '../dist/lib/zenroom';
 
-const zenroom_exec = async (zencode, conf=null, keys=null, data=null, verbosity=1) => {
+/* istanbul ignore next */
+const __zenroom_exec = (zencode, conf=null, keys=null, data=null, verbosity=1) => {
     return C.ccall('zenroom_exec', 'number',
                    ['string', 'string', 'string', 'string', 'number'],
                    [ zencode,  conf,     keys,     data,     verbosity])
@@ -28,13 +29,17 @@ const zenroom = (function() {
   var self = {}
   self.options = {}
 
+  const __debug = function() {
+    return self
+  }
+
   const zencode = function(zencode) {
     self.zencode = zencode
     return this
   }
 
   const keys = function(keys) {
-    self.keys = keys
+    self.keys = keys ? JSON.stringify(keys) : null
     return this
   }
 
@@ -65,11 +70,12 @@ const zenroom = (function() {
   }
 
   const exec = function() {
-    zenroom_exec(self.zencode, self.conf, self.keys, self.data, self.verbosity)
+    __zenroom_exec(self.zencode, self.conf, self.keys, self.data, self.verbosity)
     return this
   }
 
   const init = function(options) {
+    /* istanbul ignore next */
     self.options = Object.assign(self.options, options) || {}
     
     zencode(self.options.zencode || '')
@@ -83,12 +89,19 @@ const zenroom = (function() {
     return this
   }
 
-  const _setup = function() {
+  const __setup = function() {
     print(self.print || (text => console.log(text)))    
     success(self.success || (() => {}))
   }
 
-  _setup()
+  const reset = function() {
+    self = {}
+    self.options = {}
+    __setup()
+    return this
+  }
+
+  __setup()
 
   return {
     zencode,
@@ -99,7 +112,9 @@ const zenroom = (function() {
     success,
     verbosity,
     exec,
-    init
+    init,
+    reset,
+    __debug
   }
 })()
 
