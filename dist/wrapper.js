@@ -28,12 +28,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 
 /* istanbul ignore next */
-var __zenroom_exec = function __zenroom_exec(zencode) {
+var zenroomExec = function zenroomExec(zencode) {
   var conf = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
   var keys = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
   var data = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
   var verbosity = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 1;
-  return _zenroom.default.ccall('zenroom_exec', 'number', ['string', 'string', 'string', 'string', 'number'], [zencode, conf, keys, data, verbosity]);
+
+  _zenroom.default.ccall('zenroom_exec', 'number', ['string', 'string', 'string', 'string', 'number'], [zencode, conf, keys, data, verbosity]);
 };
 
 var zenroom = function () {
@@ -44,23 +45,23 @@ var zenroom = function () {
     return self;
   };
 
-  var zencode = function zencode(_zencode) {
-    self.zencode = _zencode;
+  var zencode = function zencode(v) {
+    self.zencode = v;
     return this;
   };
 
-  var keys = function keys(_keys) {
-    self.keys = _keys ? JSON.stringify(_keys) : null;
+  var keys = function keys(v) {
+    self.keys = v ? JSON.stringify(v) : null;
     return this;
   };
 
-  var conf = function conf(_conf) {
-    self.conf = _conf;
+  var conf = function conf(v) {
+    self.conf = v;
     return this;
   };
 
-  var data = function data(_data) {
-    self.data = _data;
+  var data = function data(v) {
+    self.data = v;
     return this;
   };
 
@@ -68,7 +69,7 @@ var zenroom = function () {
     self.print = printFunction;
 
     _zenroom.default.print = function (text) {
-      self.print(text);
+      return self.print(text);
     };
 
     return this;
@@ -79,14 +80,13 @@ var zenroom = function () {
     return this;
   };
 
-  var verbosity = function verbosity(_verbosity) {
-    self.verbosity = _verbosity;
+  var verbosity = function verbosity(v) {
+    self.verbosity = v;
     return this;
   };
 
   var exec = function exec() {
-    __zenroom_exec(self.zencode, self.conf, self.keys, self.data, self.verbosity);
-
+    zenroomExec(self.zencode, self.conf, self.keys, self.data, self.verbosity);
     return this;
   };
 

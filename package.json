@@ -13,7 +13,7 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "pretranspile": "yarn build && mkdirp dist/lib && cp -v zenroom/build/nodejs/z* dist/lib",
     "transpile": "babel src -d dist",
-    "prepublish": "yarn test",
+    "prepare": "yarn transpile && yarn test",
     "test": "nyc --require @babel/register --require @babel/polyfill mocha",
     "test:watch": "yarn test --watch"
   },
@@ -34,6 +34,7 @@
     "mkdirp": "^0.5.1",
     "mocha": "^5.2.0",
     "nyc": "^13.1.0",
+    "release-it": "^8.3.0",
     "rimraf": "^2.6.2",
     "sinon": "^7.1.1"
   },
