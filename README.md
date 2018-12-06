@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-	<a href="https://travis-ci.com/puria/zenroomjs.svg?branch=master">
+	<a href="https://travis-ci.com/puria/zenroomjs">
 		<img src="https://travis-ci.org/puria/zenroomjs.svg?branch=master"
 			 alt="Build Status">
 	</a>
