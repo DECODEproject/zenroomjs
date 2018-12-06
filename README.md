@@ -8,16 +8,18 @@
   <br>
 </h1>
 
-<h4 align="center">
-providing a js wrapper of <a href="https://zenroom.dyne.org">zenroom</a>, a secure and small virtual machine for crypto language processing.</h4>
-
+<table><tr><td>
+<h3 align="center">
+Zenroomjs provides a javascript wrapper of <a href="https://zenroom.dyne.org">Zenroom</a>, a secure and small virtual machine for crypto language processing.
+</h3>
+  
 <p align="center">
 	<a href="https://travis-ci.com/puria/zenroomjs">
 		<img src="https://travis-ci.org/puria/zenroomjs.svg?branch=master"
 			 alt="Build Status">
 	</a>
-    <a href="https://coveralls.io/github/puria/zenroomjs?branch=master">
-		<img src="https://coveralls.io/repos/github/puria/zenroomjs/badge.svg?branch=master"
+  <a href="https://coveralls.io/github/puria/zenroomjs?branch=master">
+    <img src="https://coveralls.io/repos/github/puria/zenroomjs/badge.svg?branch=master"
 			 alt="Coverage Status">
 	</a>
     <a href="https://dyne.org">
@@ -25,6 +27,69 @@ providing a js wrapper of <a href="https://zenroom.dyne.org">zenroom</a>, a secu
     </a>
 </p>
 
+<div align="center">
+  <h3>
+    <a href="#snowboarder-getting-started">:snowboarder: Getting started</a>
+    <span> • </span>
+    <a href="#video_game-usage">:video_game: Usage</a>
+    <span> • </span>
+    <a href="#heart_eyes-acknowledgements">:heart_eyes: Acknowledgements</a>
+    <span> • </span>
+    <a href="#busts_in_silhouette-contributing">:busts_in_silhouette: Contributing</a>
+    <span> • </span>
+    <a href="#briefcase-license">:briefcase: License</a>
+  </h3>
+</div>
 
-# zenroomjs
-zenroomjs provides a javascript wrapper of zenroom, a secure and small virtual machine for crypto language processing
+Zenroom and Zenrule are software in **ALPHA stage** and are part of the [DECODE project](https://decodeproject.eu) about data-ownership and [technological sovereignty](https://www.youtube.com/watch?v=RvBRbwBm_nQ). Our effort is that of improving people's awareness of how their data is processed by algorithms, as well facilitate the work of developers to create along [privacy by design principles](https://decodeproject.eu/publications/privacy-design-strategies-decode-architecture) using algorithms that can be deployed in any situation without any change.
+
+</td></tr></table>
+
+## :snowboarder: Getting started
+
+```js
+yarn add zenroom
+```
+***
+## :video_game: Usage
+
+***
+## :heart_eyes: Acknowledgements
+
+Copyright (C) 2018 by [Dyne.org](https://www.dyne.org) foundation, Amsterdam
+
+Designed, written and maintained by Puria Nafisi Azizi.
+
+<img src="https://zenroom.dyne.org/img/ec_logo.png" class="pic" alt="Project funded by the European Commission">
+
+This project is receiving funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement nr. 732546 (DECODE).
+
+***
+## :busts_in_silhouette: Contributing
+
+Please first take a look at the [Dyne.org - Contributor License Agreement](CONTRIBUTING.md) then
+
+1. [FORK IT](https://github.com/puria/zenroomjs/fork)
+1. Create your feature branch `git checkout -b feature/branch`
+1. Commit your changes `git commit -am 'Add some fooBar'`
+1. Push to the branch `git push origin feature/branch`
+1. Create a new Pull Request
+1. Thank you
+
+***
+## :briefcase: License
+
+     Copyright 2018 Dyne.org foundation, Amsterdam
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+
