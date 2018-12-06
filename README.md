@@ -1,8 +1,15 @@
-<p align="center">
+<h1 align="center">
+  <br>
 	<a href="https://zenroom.dyne.org">
-		<img src="assets/zenroomjs.svg" width="300" alt="zenroom js">
+		<img src="assets/zenroomjs.svg" width="200" alt="zenroom js">
 	</a>
-</p>
+  <br>
+  Zenroomjs
+  <br>
+</h1>
+
+<h4 align="center">
+providing a js wrapper of <a href="https://zenroom.dyne.org">zenroom</a>, a secure and small virtual machine for crypto language processing.</h4>
 
 <p align="center">
 	<a href="https://travis-ci.com/puria/zenroomjs">
@@ -20,4 +27,4 @@
 
 
 # zenroomjs
-zenroomjs provides a javascript wasm wrapper of zenroom, a secure and small virtual machine for crypto language processing
+zenroomjs provides a javascript wrapper of zenroom, a secure and small virtual machine for crypto language processing
