@@ -18,90 +18,93 @@ import '@babel/polyfill';
 import C from '../dist/lib/zenroom';
 
 /* istanbul ignore next */
-const __zenroom_exec = (zencode, conf=null, keys=null, data=null, verbosity=1) => {
-    return C.ccall('zenroom_exec', 'number',
-                   ['string', 'string', 'string', 'string', 'number'],
-                   [ zencode,  conf,     keys,     data,     verbosity])
-}
+const zenroomExec = (zencode, conf = null, keys = null, data = null, verbosity = 1) => {
+  C.ccall(
+    'zenroom_exec',
+    'number',
+    ['string', 'string', 'string', 'string', 'number'],
+    [zencode, conf, keys, data, verbosity],
+  );
+};
 
 
-const zenroom = (function() {
-  var self = {}
-  self.options = {}
+const zenroom = (function () {
+  let self = {};
+  self.options = {};
 
-  const __debug = function() {
-    return self
-  }
+  const __debug = function () {
+    return self;
+  };
 
-  const zencode = function(zencode) {
-    self.zencode = zencode
-    return this
-  }
+  const zencode = function (v) {
+    self.zencode = v;
+    return this;
+  };
 
-  const keys = function(keys) {
-    self.keys = keys ? JSON.stringify(keys) : null
-    return this
-  }
+  const keys = function (v) {
+    self.keys = v ? JSON.stringify(v) : null;
+    return this;
+  };
 
-  const conf = function(conf) {
-    self.conf = conf
-    return this
-  }
+  const conf = function (v) {
+    self.conf = v;
+    return this;
+  };
 
-  const data = function(data) {
-    self.data = data
-    return this
-  }
+  const data = function (v) {
+    self.data = v;
+    return this;
+  };
 
-  const print = function(printFunction) {
-    self.print = printFunction
-    C.print = text => { self.print(text) }
-    return this
-  }
+  const print = function (printFunction) {
+    self.print = printFunction;
+    C.print = text => self.print(text);
+    return this;
+  };
 
-  const success = function(callback) {
-    C.exec_ok = callback
-    return this
-  }
+  const success = function (callback) {
+    C.exec_ok = callback;
+    return this;
+  };
 
-  const verbosity = function(verbosity) {
-    self.verbosity = verbosity
-    return this
-  }
+  const verbosity = function (v) {
+    self.verbosity = v;
+    return this;
+  };
 
-  const exec = function() {
-    __zenroom_exec(self.zencode, self.conf, self.keys, self.data, self.verbosity)
-    return this
-  }
+  const exec = function () {
+    zenroomExec(self.zencode, self.conf, self.keys, self.data, self.verbosity);
+    return this;
+  };
 
-  const init = function(options) {
+  const init = function (options) {
     /* istanbul ignore next */
-    self.options = Object.assign(self.options, options) || {}
-    
-    zencode(self.options.zencode || '')
-    keys(self.options.keys || null)
-    conf(self.options.conf || null)
-    data(self.options.data || null)
-    print(self.options.print || (text => console.log(text)))
-    success(self.options.success || (() => {}))
-    verbosity(self.options.verbosity || 1)
+    self.options = Object.assign(self.options, options) || {};
 
-    return this
-  }
+    zencode(self.options.zencode || '');
+    keys(self.options.keys || null);
+    conf(self.options.conf || null);
+    data(self.options.data || null);
+    print(self.options.print || (text => console.log(text)));
+    success(self.options.success || (() => {}));
+    verbosity(self.options.verbosity || 1);
 
-  const __setup = function() {
-    print(self.print || (text => console.log(text)))    
-    success(self.success || (() => {}))
-  }
+    return this;
+  };
 
-  const reset = function() {
-    self = {}
-    self.options = {}
-    __setup()
-    return this
-  }
+  const __setup = function () {
+    print(self.print || (text => console.log(text)));
+    success(self.success || (() => {}));
+  };
 
-  __setup()
+  const reset = function () {
+    self = {};
+    self.options = {};
+    __setup();
+    return this;
+  };
+
+  __setup();
 
   return {
     zencode,
@@ -114,8 +117,8 @@ const zenroom = (function() {
     exec,
     init,
     reset,
-    __debug
-  }
-})()
+    __debug,
+  };
+})();
 
-export default zenroom
+export default zenroom;
