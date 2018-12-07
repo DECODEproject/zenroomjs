@@ -128,6 +128,23 @@ describe('Zenroom module', function() {
         expect(errorExecuted).to.be.true
     })
 
+    it('should execute the reset correctly', function() {
+        let options = zenroom.init(encrypt_secret_to_many).__debug()
+        expect(options.data).to.be.equal(encrypt_secret_to_many.data)
+        options = zenroom.reset().__debug()
+        expect(options.data).to.be.equal(undefined)
+        expect(options.error).to.not.throw()
+    })
+
+    it('should work error method with init also', function() {
+        let errorExecuted = false; 
+        zenroom.init({
+            zencode: "broken script on purpose",
+            error: () => { errorExecuted = true }
+        }).exec()
+        expect(errorExecuted).to.be.true
+    })
+
     it('should execute the success method on success', function() {
         let executed = false;
         const zencode = 'print("hello")'

@@ -15,6 +15,7 @@
     "transpile": "babel src -d dist",
     "prepack": "yarn transpile && yarn test",
     "test": "nyc --require @babel/register --require @babel/polyfill mocha",
+    "test:html": "nyc report --reporter=html yarn test",
     "test:watch": "yarn test --watch",
     "doc": "documentation serve src/wrapper.js --shallow",
     "release": "release-it"
@@ -45,6 +46,7 @@
     "@babel/polyfill": "^7.0.0"
   },
   "nyc": {
+    "extends": "@istanbuljs/nyc-config-babel",
     "check-coverage": true,
     "per-file": true,
     "lines": 99,

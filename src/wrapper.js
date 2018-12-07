@@ -309,8 +309,8 @@ const zenroom = (function () {
     conf(self.options.conf || null);
     data(self.options.data || null);
     print(self.options.print || (text => console.log(text)));
-    success(self.options.success || (() => {}));
-    error(self.options.error || (() => {}));
+    success(self.options.success || new Function);
+    error(self.options.error || new Function);
     verbosity(self.options.verbosity || 1);
 
     return this;
