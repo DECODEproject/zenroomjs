@@ -9,13 +9,13 @@
 </h1>
 
 <table><tr><td>
-<h3 align="center">
+<h4 align="center">
 Zenroomjs provides a javascript wrapper of <a href="https://zenroom.dyne.org">Zenroom</a>, a secure and small virtual machine for crypto language processing.
-</h3>
+</h4>
   
 <p align="center">
 	<a href="https://travis-ci.com/puria/zenroomjs">
-		<img src="https://travis-ci.org/puria/zenroomjs.svg?branch=master"
+		<img src="https://travis-ci.com/puria/zenroomjs.svg?branch=master"
 			 alt="Build Status">
 	</a>
   <a href="https://coveralls.io/github/puria/zenroomjs?branch=master">
@@ -27,9 +27,11 @@ Zenroomjs provides a javascript wrapper of <a href="https://zenroom.dyne.org">Ze
     </a>
 </p>
 
+<br><br>
+
 <div align="center">
   <h3>
-    <a href="#snowboarder-getting-started">:snowboarder: Getting started</a>
+    <a href="#floppy_disk-install">:floppy_disk: Install</a>
     <span> • </span>
     <a href="#video_game-usage">:video_game: Usage</a>
     <span> • </span>
@@ -41,13 +43,16 @@ Zenroomjs provides a javascript wrapper of <a href="https://zenroom.dyne.org">Ze
   </h3>
 </div>
 
-Zenroom and Zenroomjs are software in **ALPHA stage** and are part of the [DECODE project](https://decodeproject.eu) about data-ownership and [technological sovereignty](https://www.youtube.com/watch?v=RvBRbwBm_nQ). Our effort is that of improving people's awareness of how their data is processed by algorithms, as well facilitate the work of developers to create along [privacy by design principles](https://decodeproject.eu/publications/privacy-design-strategies-decode-architecture) using algorithms that can be deployed in any situation without any change.
+<br><br>
 
+:construction: Zenroom and Zenroomjs are software in **ALPHA stage** and are part of the [DECODE project](https://decodeproject.eu) about data-ownership and [technological sovereignty](https://www.youtube.com/watch?v=RvBRbwBm_nQ). Our effort is that of improving people's awareness of how their data is processed by algorithms, as well facilitate the work of developers to create along [privacy by design principles](https://decodeproject.eu/publications/privacy-design-strategies-decode-architecture) using algorithms that can be deployed in any situation without any change.
+
+<br>
 </td></tr></table>
 
-## :snowboarder: Getting started
+## :floppy_disk: Install
 
-```js
+```bash
 yarn add zenroom
 ```
 
@@ -66,36 +71,36 @@ the zenroomjs module is architectured as a [Revealing Module Pattern](https://ad
 Another used paradigm is method chaining this means that you can chain the different methods, let's see some hello worldish example:
 
 ```js
-    import zenroom from 'zenroom'
+import zenroom from 'zenroom'
 
-    const zencode = `print("hello world from zenroom in nodejs")`
-    zenroom.zencode(zencode).exec()
+const zencode = `print("hello world from zenroom in nodejs")`
+zenroom.zencode(zencode).exec()
 
-    // prints in the console.log "hello world from zenroom in nodejs"
+// prints in the console.log "hello world from zenroom in nodejs"
 ```
 
 To initialize the options there are two ways, the one with the chaining that we saw before or a handy `init()` method to make them in one shot
 
 ```js
-    // method chaining
-    zenroom.zencode('print("hello world")')
-           .verbosity(1)
-           .success(() => { console.log('everything goes smooth') })
-           .error(() => { console.error('something very bad happened') })
-           .exec()
-           .reset() // cleans up the session
+// method chaining
+zenroom.zencode('print("hello world")')
+       .verbosity(1)
+       .success(() => { console.log('everything goes smooth') })
+       .error(() => { console.error('something very bad happened') })
+       .exec()
+       .reset() // cleans up the session
 ```
 
 ```js
-    // using the init() method
-    options = {
-      zencode: 'print("hello world")',
-      verbosity: 1,
-      success: () => { console.log('everything goes smooth') },
-      error: () => { console.error('something very bad happened') }
-    }
+// using the init() method
+options = {
+	zencode: 'print("hello world")',
+	verbosity: 1,
+	success: () => { console.log('everything goes smooth') },
+	error: () => { console.error('something very bad happened') }
+}
 
-    zenroom.init(options).exec()
+zenroom.init(options).exec()
 ```
 
 All the available options and method are covered in the next API section
@@ -152,8 +157,8 @@ Example usage of `keys()`
 import zenroom from 'zenroom'
 
 const script = `
-                 keys = JSON.decode(KEYS)
-                 print(keys)
+	keys = JSON.decode(KEYS)
+	print(keys)
 `
 
 const keys = {a: 1, b: 2}
