@@ -53,6 +53,53 @@ yarn add zenroom
 ***
 ## :video_game: Usage
 
+To start using the zenroom module just
+
+    import zenroom from 'zenroom'
+
+the zenroomjs module is architectured as a [Revealing Module Pattern](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript) this also means that once you set some options it will remain till the object lifetime, unless you reset or overwrite them.
+
+Another used paradigm is method chaining this means that you can chain the different methods, let's see some hello worldish example:
+
+    import zenroom from 'zenroom'
+
+    const zencode = `print("hello world from zenroom in nodejs")`
+    zenroom.zencode(zencode).exec()
+    
+    // prints in the console.log "hello world from zenroom in nodejs"
+
+To initialize the options there are two ways, the one with the chaining that we saw before or a handy `init()` method to make them in one shot
+
+    // method chaining
+    zenroom.zencode('print("hello world")')
+           .verbosity(1)
+           .success(() => { console.log('everything goes smooth') })
+           .error(() => { console.error('something very bad happened') })
+           .exec()
+           .reset() // cleans up the session
+
+
+
+
+    // using the init() method
+    options = {
+      zencode: 'print("hello world")',
+      verbosity: 1,
+      success: () => { console.log('everything goes smooth') },
+      error: () => { console.error('something very bad happened') }
+    }
+
+    zenroom.init(options).exec()
+
+
+All the available options and method are covered in the next API section
+
+***
+
+### API
+
+
+
 ***
 ## :heart_eyes: Acknowledgements
 

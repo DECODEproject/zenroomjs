@@ -1,7 +1,7 @@
 {
   "name": "zenroom",
   "version": "0.8.1",
-  "description": "wasm wrapper of zenroom, a secure and small virtual machine for crypto language processing",
+  "description": "wrapper of Zenroom, a secure and small virtual machine for crypto language processing",
   "main": "index.js",
   "repository": "https://github.com/puria/zenroomjs.git",
   "author": "Puria Nafisi Azizi <puria@dyne.org>",
@@ -16,7 +16,8 @@
     "prepack": "yarn transpile && yarn test",
     "test": "nyc --require @babel/register --require @babel/polyfill mocha",
     "test:watch": "yarn test --watch",
-	"release": "release-it"
+    "doc": "documentation serve src/wrapper.js --shallow",
+    "release": "release-it"
   },
   "files": [
     "dist"
@@ -29,6 +30,7 @@
     "babel-plugin-istanbul": "^5.1.0",
     "chai": "^4.2.0",
     "coveralls": "^3.0.2",
+    "documentation": "^8.1.2",
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",

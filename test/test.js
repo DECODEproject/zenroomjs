@@ -50,7 +50,7 @@ describe('Zenroom module', function() {
 
     it('should zenroom have exposed all public method', function() {
         const z = zenroom.init()
-        expect(z).to.be.an('object').to.have.all.keys("conf data exec init keys print success verbosity zencode __debug reset".split(' '))
+        expect(z).to.be.an('object').to.have.all.keys("conf data exec error init keys print success verbosity zencode __debug reset".split(' '))
     })
 
     it('should zenroom initialize script', function() {
@@ -118,4 +118,23 @@ describe('Zenroom module', function() {
         expect(options.options).to.include(data)
     })
 
+    it('should execute the error method on error', function() {
+        let errorExecuted = false;
+        const zencode = "broken script on purpose"
+        const error = () => {
+            errorExecuted = true
+        }
+        zenroom.zencode(zencode).error(error).exec()
+        expect(errorExecuted).to.be.true
+    })
+
+    it('should execute the success method on success', function() {
+        let executed = false;
+        const zencode = 'print("hello")'
+        const success = () => {
+            executed = true
+        }
+        zenroom.zencode(zencode).success(success).exec()
+        expect(executed).to.be.true
+    })
 });
