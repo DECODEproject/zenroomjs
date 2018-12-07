@@ -18,7 +18,7 @@
     "test:html": "nyc report --reporter=html yarn test",
     "test:watch": "yarn test --watch",
     "doc": "documentation serve src/wrapper.js --shallow",
-    "doc:inject": "documentation readme src/wrapper.js --section=API --shallow",
+    "doc:api": "documentation readme src/wrapper.js -s ':honeybee: API' --shallow --markdown-toc false",
     "release": "release-it"
   },
   "files": [
