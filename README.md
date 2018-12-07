@@ -9,9 +9,9 @@
 </h1>
 
 <table><tr><td>
-<h3 align="center">
+<h4 align="center">
 Zenroomjs provides a javascript wrapper of <a href="https://zenroom.dyne.org">Zenroom</a>, a secure and small virtual machine for crypto language processing.
-</h3>
+</h4>
   
 <p align="center">
 	<a href="https://travis-ci.com/puria/zenroomjs">
@@ -27,6 +27,8 @@ Zenroomjs provides a javascript wrapper of <a href="https://zenroom.dyne.org">Ze
     </a>
 </p>
 
+<br><br>
+
 <div align="center">
   <h3>
     <a href="#floppy_disk-install">:floppy_disk: Install</a>
@@ -41,8 +43,11 @@ Zenroomjs provides a javascript wrapper of <a href="https://zenroom.dyne.org">Ze
   </h3>
 </div>
 
-Zenroom and Zenroomjs are software in **ALPHA stage** and are part of the [DECODE project](https://decodeproject.eu) about data-ownership and [technological sovereignty](https://www.youtube.com/watch?v=RvBRbwBm_nQ). Our effort is that of improving people's awareness of how their data is processed by algorithms, as well facilitate the work of developers to create along [privacy by design principles](https://decodeproject.eu/publications/privacy-design-strategies-decode-architecture) using algorithms that can be deployed in any situation without any change.
+<br><br>
 
+:construction: Zenroom and Zenroomjs are software in **ALPHA stage** and are part of the [DECODE project](https://decodeproject.eu) about data-ownership and [technological sovereignty](https://www.youtube.com/watch?v=RvBRbwBm_nQ). Our effort is that of improving people's awareness of how their data is processed by algorithms, as well facilitate the work of developers to create along [privacy by design principles](https://decodeproject.eu/publications/privacy-design-strategies-decode-architecture) using algorithms that can be deployed in any situation without any change.
+
+<br>
 </td></tr></table>
 
 ## :floppy_disk: Install
