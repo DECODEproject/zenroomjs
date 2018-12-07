@@ -41,6 +41,7 @@ const zenroom = (function () {
    * 
    * The syntax of the zencode scripts are extensively available at
    * https://zenroom.dyne.org/api/tutorials/Syntax.html
+   * You may want also to look at some example in a live executable environment here https://zenroom.dyne.org/demo/
    * 
    * @example <caption>Example usage of `zencode()`</caption>
    * // returns zenroom
