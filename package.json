@@ -1,6 +1,6 @@
 {
   "name": "zenroom",
-  "version": "0.8.2",
+  "version": "0.8.1",
   "description": "wrapper of Zenroom, a secure and small virtual machine for crypto language processing",
   "main": "index.js",
   "repository": "https://github.com/puria/zenroomjs.git",
@@ -13,7 +13,6 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "pretranspile": "yarn build && mkdirp dist/lib && cp -v zenroom/build/nodejs/z* dist/lib",
     "transpile": "babel src -d dist",
-    "prepack": "yarn transpile && yarn test",
     "test": "nyc --require @babel/register --require @babel/polyfill mocha",
     "test:html": "nyc report --reporter=html yarn test",
     "test:watch": "yarn test --watch",
