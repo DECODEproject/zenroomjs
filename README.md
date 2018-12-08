@@ -18,10 +18,11 @@ Zenroomjs provides a javascript wrapper of <a href="https://zenroom.dyne.org">Ze
 		<img src="https://travis-ci.com/puria/zenroomjs.svg?branch=master"
 			 alt="Build Status">
 	</a>
-  <a href="https://coveralls.io/github/puria/zenroomjs?branch=master">
-    <img src="https://coveralls.io/repos/github/puria/zenroomjs/badge.svg?branch=master"
-			 alt="Coverage Status">
-	</a>
+
+	<a href="https://codecov.io/gh/puria/zenroomjs">
+	  <img src="https://codecov.io/gh/puria/zenroomjs/branch/master/graph/badge.svg" />
+    </a>
+
     <a href="https://dyne.org">
         <img src="https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%9D%A4%20by-Dyne.org-blue.svg" alt="Dyne.org">
     </a>
