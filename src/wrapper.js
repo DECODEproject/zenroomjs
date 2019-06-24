@@ -17,13 +17,13 @@
 const C = require('../dist/lib/zenroom')
 
 /* istanbul ignore next */
-const zenroomExec = (zencode, conf = null, keys = null, data = null, verbosity = 1) => {
+const zenroomExec = (script, conf = null, keys = null, data = null, verbosity = 1) => {
   C.then(Module => {
     Module.ccall(
       'zenroom_exec',
       'number',
       ['string', 'string', 'string', 'string', 'number'],
-      [zencode, conf, keys, data, verbosity]
+      [script, conf, keys, data, verbosity]
     )
   })
 }
@@ -37,31 +37,31 @@ const zenroom = (function () {
   }
 
   /**
-   * Set the zencode script to run
+   * Set the zenroom script to run
    *
-   * The syntax of the zencode scripts are extensively available at
+   * The syntax of the zenroom scripts are extensively available at
    * https://zenroom.dyne.org/api/tutorials/Syntax.html
    * You may want also to look at some example in a live executable environment here https://zenroom.dyne.org/demo/
    *
-   * @example <caption>Example usage of `zencode()`</caption>
+   * @example <caption>Example usage of `script()`</caption>
    * // returns zenroom
    * import zenroom from 'zenroom'
    *
    * const script = 'print("hello")'
-   * zenroom.zencode(script).exec().reset()
+   * zenroom.script(script).exec().reset()
    *
-   * @param {string} zencode tha script to be set
+   * @param {string} script the lua script to be set
    * @returns {zenroom} the zenroom module
    */
-  const zencode = function (zencode) {
-    self.zencode = zencode
+  const script = function (script) {
+    self.script = script
     return this
   }
 
   /**
    * Set the keys JSON for you zenroom execution
    *
-   * the keys will be available in zencode as the `KEYS` variable
+   * the keys will be available in script as the `KEYS` variable
    *
    * @example <caption>Example usage of `keys()`</caption>
    * // returns zenroom
@@ -73,7 +73,7 @@ const zenroom = (function () {
    * `
    *
    * const keys = {a: 1, b: 2}
-   * zenroom.zencode(script).keys(keys).exec().reset()
+   * zenroom.script(script).keys(keys).exec().reset()
    *
    * @param {object} keys the keys to be set as an object
    * @returns {object} the zenroom module
@@ -94,7 +94,7 @@ const zenroom = (function () {
    *
    * const script = 'print("hello")'
    * const conf = 'umm'
-   * zenroom.zencode(script).conf(conf).exec()
+   * zenroom.script(script).conf(conf).exec()
    *
    * @param {string} conf the string of configuration to be set
    * @returns {object} the zenroom module
@@ -107,7 +107,7 @@ const zenroom = (function () {
   /**
    * Set the data for your zenroom execution
    *
-   * The data will be available in zencode as the `DATA` variable
+   * The data will be available in script as the `DATA` variable
    *
    * @example <caption>Example usage of `data()`</caption>
    * // returns zenroom
@@ -119,7 +119,7 @@ const zenroom = (function () {
    * `
    *
    * const data = {a: 1, b: 2}
-   * zenroom.zencode(script).data(data).exec()
+   * zenroom.script(script).data(data).exec()
    *
    * @param {string} data
    * @returns {object} the zenroom module
@@ -141,7 +141,7 @@ const zenroom = (function () {
    * const savedLines = []
    * const printFunction = (text) => { savedLines.push(text) }
    * const script = 'print("hello")'
-   * zenroom.print(printFunction).zencode(script).exec()
+   * zenroom.print(printFunction).script(script).exec()
    *
    * @callback print
    * @returns {object} the zenroom module
@@ -160,7 +160,7 @@ const zenroom = (function () {
    * import zenroom from 'zenroom'
    *
    * const script = 'print("hello")'
-   * zenroom.zencode(script).success(()=>{
+   * zenroom.script(script).success(()=>{
    *    pleaseRunSomeOtherMethodAfter()
    * }).exec()
    *
@@ -181,7 +181,7 @@ const zenroom = (function () {
    * import zenroom from 'zenroom'
    *
    * const script = 'print("hello")';
-   * zenroom.zencode(script).error(()=>{
+   * zenroom.script(script).error(()=>{
    *    pleaseRunSomeOtherMethodAfterError()
    * }).exec()
    *
@@ -209,7 +209,7 @@ const zenroom = (function () {
    * import zenroom from 'zenroom'
    *
    * const script = 'print("hello")'
-   * zenroom.zencode(script).success(()=>{
+   * zenroom.script(script).success(()=>{
    *    pleaseRunSomeOtherMethodAfter();
    * }).exec()
    *
@@ -233,12 +233,12 @@ const zenroom = (function () {
    * import zenroom from 'zenroom'
    *
    * const script = 'print("hello")';
-   * zenroom.zencode(script).exec()
+   * zenroom.script(script).exec()
    *
    * @returns {object} the zenroom module
    */
   const exec = function () {
-    zenroomExec(self.zencode, self.conf, self.keys, self.data, self.verbosity)
+    zenroomExec(self.script, self.conf, self.keys, self.data, self.verbosity)
     return this
   }
 
@@ -250,7 +250,7 @@ const zenroom = (function () {
    *
    * The following options are available:
    * <ul>
-   *   <li><strong>zencode</strong></li>
+   *   <li><strong>script</strong></li>
    *   <li><strong>keys</strong></li>
    *   <li><strong>conf</strong></li>
    *   <li><strong>data</strong></li>
@@ -265,7 +265,7 @@ const zenroom = (function () {
    * import zenroom from 'zenroom'
    *
    * const encrypt_secret_to_many = {
-   *  zencode: `keyring = ECDH.new()
+   *  script: `keyring = ECDH.new()
    *            secret = str(DATA)
    *            keys = JSON.decode(KEYS)
    *            keyring:private( base64(keys.keyring.secret) )
@@ -304,7 +304,7 @@ const zenroom = (function () {
     /* istanbul ignore next */
     self.options = Object.assign(self.options, options) || {}
 
-    zencode(self.options.zencode || '')
+    script(self.options.script || '')
     keys(self.options.keys || null)
     conf(self.options.conf || null)
     data(self.options.data || null)
@@ -334,10 +334,10 @@ const zenroom = (function () {
    * import zenroom from 'zenroom'
    *
    * const script = 'print("hello")';
-   * zenroomd.zencode(script)
-   *         .exec()    // This runs the script
-   *         .reset()
-   *         .exec()    // This does not run the script anymore
+   * zenroom.script(script)
+   *        .exec()    // This runs the script
+   *        .reset()
+   *        .exec()    // This does not run the script anymore
    *
    * @returns {object} the zenroom module
    */
@@ -351,7 +351,7 @@ const zenroom = (function () {
   __setup()
 
   return {
-    zencode,
+    script,
     keys,
     conf,
     data,
