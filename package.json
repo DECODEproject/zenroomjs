@@ -7,11 +7,11 @@
   "author": "Puria Nafisi Azizi <puria@dyne.org>",
   "license": "Apache-2.0",
   "scripts": {
-    "lint": "eslint src/*",
-    "build": "cd zenroom && make javascript-node",
+    "lint": "npx standard",
+    "build": "cd zenroom && make javascript-npm",
     "clean": "rimraf dist/lib && cd zenroom && make clean",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "pretranspile": "yarn build && mkdirp dist/lib && cp -v zenroom/build/nodejs/z* dist/lib",
+    "pretranspile": "yarn build && mkdirp dist/lib && cp -v zenroom/build/npm/z* dist/lib",
     "transpile": "babel src -d dist",
     "test": "nyc --require @babel/register --require @babel/polyfill mocha",
     "test:html": "nyc report --reporter=html yarn test",
@@ -27,8 +27,10 @@
     "@babel/cli": "^7.2.0",
     "@babel/core": "^7.2.0",
     "@babel/preset-env": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
     "babel-plugin-istanbul": "^5.1.0",
+    "babelify": "^10.0.0",
     "chai": "^4.2.0",
     "codecov": "^3.1.0",
     "coveralls": "^3.0.2",
@@ -41,10 +43,14 @@
     "nyc": "^13.1.0",
     "release-it": "^8.3.0",
     "rimraf": "^2.6.2",
-    "sinon": "^7.1.1"
+    "sinon": "^7.1.1",
+    "standard": "^12.0.1"
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0"
+  },
+  "standard": {
+  	"ignore": ["dist", "zenroom", "test"]
   },
   "nyc": {
     "extends": "@istanbuljs/nyc-config-babel",

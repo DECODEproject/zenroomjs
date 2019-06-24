@@ -5,12 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-require("@babel/polyfill");
-
-var _zenroom = _interopRequireDefault(require("../dist/lib/zenroom"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 /*
  * Copyright 2018 Dyne.org foundation, Amsterdam
  *
@@ -26,15 +20,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+var C = require('../dist/lib/zenroom');
 /* istanbul ignore next */
+
+
 var zenroomExec = function zenroomExec(zencode) {
   var conf = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
   var keys = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
   var data = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
   var verbosity = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 1;
-
-  _zenroom.default.ccall('zenroom_exec', 'number', ['string', 'string', 'string', 'string', 'number'], [zencode, conf, keys, data, verbosity]);
+  C.then(function (Module) {
+    Module.ccall('zenroom_exec', 'number', ['string', 'string', 'string', 'string', 'number'], [zencode, conf, keys, data, verbosity]);
+  });
 };
 
 var zenroom = function () {
@@ -49,6 +46,7 @@ var zenroom = function () {
    * 
    * The syntax of the zencode scripts are extensively available at
    * https://zenroom.dyne.org/api/tutorials/Syntax.html
+   * You may want also to look at some example in a live executable environment here https://zenroom.dyne.org/demo/
    * 
    * @example <caption>Example usage of `zencode()`</caption>
    * // returns zenroom
@@ -162,7 +160,7 @@ var zenroom = function () {
   var print = function print(printFunction) {
     self.print = printFunction;
 
-    _zenroom.default.print = function (text) {
+    C.print = function (text) {
       return self.print(text);
     };
 
@@ -187,7 +185,7 @@ var zenroom = function () {
 
   var success = function success(success_callback) {
     self.success = success_callback;
-    _zenroom.default.exec_ok = success_callback;
+    C.exec_ok = success_callback;
     return this;
   };
   /**
@@ -209,7 +207,7 @@ var zenroom = function () {
 
   var error = function error(error_callback) {
     self.error = error_callback;
-    _zenroom.default.exec_error = error_callback;
+    C.exec_error = error_callback;
     return this;
   };
   /**
