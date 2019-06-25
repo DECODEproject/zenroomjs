@@ -43,7 +43,7 @@ describe('Zenroom module', function () {
     zenroom.reset()
     this.clog = sinon.spy(console, 'log')
     this.cerr = sinon.spy(console, 'error')
-    setTimeout(done, 80);
+    setTimeout(done, 200);
   })
 
   afterEach(function () {
