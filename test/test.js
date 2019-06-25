@@ -39,10 +39,11 @@ const encrypt_secret_to_many = {
 }
 
 describe('Zenroom module', function () {
-  beforeEach(function () {
+  beforeEach(function (done) {
     zenroom.reset()
     this.clog = sinon.spy(console, 'log')
     this.cerr = sinon.spy(console, 'error')
+    setTimeout(done, 80);
   })
 
   afterEach(function () {
