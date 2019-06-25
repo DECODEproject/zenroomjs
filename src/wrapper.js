@@ -31,6 +31,18 @@ const zenroomExec = (script, conf = null, keys = null, data = null, verbosity = 
   })
 }
 
+/* istanbul ignore next */
+const zencodeExec = (script, conf = null, keys = null, data = null, verbosity = 1) => {
+  C.then(Module => {
+    Module.ccall(
+      'zencode_exec',
+      'number',
+      ['string', 'string', 'string', 'string', 'number'],
+      [script, conf, keys, data, verbosity]
+    )
+  })
+}
+
 const zenroom = (function () {
   let self = {}
   self.options = {}
@@ -253,6 +265,27 @@ const zenroom = (function () {
   }
 
   /**
+   * Execute zencode contracts (using the previously setted options)
+   *
+   * It is usually the last method of the chain, but like the other methods returns
+   * the zenroom module itself, so can be used for other calls if you need to make more
+   * executions in a row
+   *
+   * @example <caption>Example usage of `zencode_exec()`</caption>
+   * // returns zenroom
+   * import zenroom from 'zenroom'
+   *
+   * const zencode = 'print("hello")';
+   * zenroom.script(script).zencode_exec()
+   *
+   * @returns {object} the zenroom module
+   */
+  const zencode_exec = function () {
+    zencodeExec(self.script, self.conf, self.keys, self.data, self.verbosity)
+    return this
+  }
+
+  /**
    * This method allows the configuration of your call by passing one
    * configuration option object. You can use the chain methods after this anyway.
    *
@@ -369,6 +402,7 @@ const zenroom = (function () {
     success,
     verbosity,
     zenroom_exec,
+    zencode_exec,
     error,
     init,
     reset,

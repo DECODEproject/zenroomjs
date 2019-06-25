@@ -45,6 +45,18 @@ var zenroomExec = function zenroomExec(script) {
     Module.ccall('zenroom_exec', 'number', ['string', 'string', 'string', 'string', 'number'], [script, conf, keys, data, verbosity]);
   });
 };
+/* istanbul ignore next */
+
+
+var zencodeExec = function zencodeExec(script) {
+  var conf = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  var keys = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  var data = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+  var verbosity = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 1;
+  C.then(function (Module) {
+    Module.ccall('zencode_exec', 'number', ['string', 'string', 'string', 'string', 'number'], [script, conf, keys, data, verbosity]);
+  });
+};
 
 var zenroom = function () {
   var self = {};
@@ -277,6 +289,28 @@ var zenroom = function () {
     return this;
   };
   /**
+   * Execute zencode contracts (using the previously setted options)
+   *
+   * It is usually the last method of the chain, but like the other methods returns
+   * the zenroom module itself, so can be used for other calls if you need to make more
+   * executions in a row
+   *
+   * @example <caption>Example usage of `zencode_exec()`</caption>
+   * // returns zenroom
+   * import zenroom from 'zenroom'
+   *
+   * const zencode = 'print("hello")';
+   * zenroom.script(script).zencode_exec()
+   *
+   * @returns {object} the zenroom module
+   */
+
+
+  var zencode_exec = function zencode_exec() {
+    zencodeExec(self.script, self.conf, self.keys, self.data, self.verbosity);
+    return this;
+  };
+  /**
    * This method allows the configuration of your call by passing one
    * configuration option object. You can use the chain methods after this anyway.
    *
@@ -402,6 +436,7 @@ var zenroom = function () {
     success: success,
     verbosity: verbosity,
     zenroom_exec: zenroom_exec,
+    zencode_exec: zencode_exec,
     error: error,
     init: init,
     reset: reset,

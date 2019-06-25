@@ -58,7 +58,7 @@ describe('Zenroom module', function () {
 
   it('should zenroom have exposed all public method', function () {
     const z = zenroom.init()
-    expect(z).to.be.an('object').to.have.all.keys('conf data zenroom_exec error init keys print success verbosity script __debug reset'.split(' '))
+    expect(z).to.be.an('object').to.have.all.keys('conf data zenroom_exec zencode_exec error init keys print success verbosity script __debug reset'.split(' '))
   })
 
   it('should zenroom initialize script', function () {
@@ -160,5 +160,38 @@ describe('Zenroom module', function () {
     }
     zenroom.script(script).success(success).zenroom_exec()
     expect(executed).to.be.true
+  })
+
+  it('should create a correct keygen', () => {
+    const script = `
+    -- generate a simple keyring
+    keyring = ECDH.new()
+    keyring:keygen()
+    
+    -- export the keypair to json
+    export = JSON.encode(
+       {
+          public  = keyring: public():base64(),
+          private = keyring:private():base64()
+       }
+    )
+    print(export)
+    `
+    zenroom.script(script).zenroom_exec()
+    const result = JSON.parse(console.log.args[0][0])
+    expect(result).to.have.all.keys('public private'.split(' '))
+  })
+
+  it(`sohuld create correct keygen with zencode`, () => {
+    const zencode = `
+    Scenario 'coconut': "To run over the mobile wallet the first time and store the output as keypair.keys"
+    Given that I am known as 'identifier'
+    When I create my new keypair
+    Then print all data
+    `
+    zenroom.script(zencode).zencode_exec()
+    const result = JSON.parse(console.log.args[0][0])
+    expect(result).to.have.all.keys('identifier')
+    expect(result.identifier).to.have.all.keys('public private curve encoding schema zenroom'.split(' '))
   })
 })
