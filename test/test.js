@@ -40,14 +40,15 @@ const encrypt_secret_to_many = {
 
 describe('Zenroom module', function () {
   beforeEach(function () {
-    sinon.spy(console, 'log')
-    sinon.spy(console, 'error')
     zenroom.reset()
+    this.clog = sinon.spy(console, 'log')
+    this.cerr = sinon.spy(console, 'error')
   })
 
   afterEach(function () {
-    console.log.restore()
-    console.error.restore()
+    this.clog.restore()
+    this.cerr.restore()
+    zenroom.reset()
   })
 
   it('should import work and be an object', function () {

@@ -1,9 +1,21 @@
 "use strict";
 
+require("core-js/modules/es.array.iterator");
+
+require("core-js/modules/es.object.assign");
+
+require("core-js/modules/es.object.to-string");
+
+require("core-js/modules/web.dom-collections.iterator");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+require("core-js/stable");
+
+require("regenerator-runtime/runtime");
 
 /*
  * Copyright 2018 Dyne.org foundation, Amsterdam
@@ -159,11 +171,11 @@ var zenroom = function () {
 
   var print = function print(printFunction) {
     self.print = printFunction;
-
-    C.print = function (text) {
-      return self.print(text);
-    };
-
+    C.then(function (Module) {
+      Module.print = function (text) {
+        return self.print(text);
+      };
+    });
     return this;
   };
   /**
@@ -185,7 +197,9 @@ var zenroom = function () {
 
   var success = function success(successCallback) {
     self.success = successCallback;
-    C.exec_ok = successCallback;
+    C.then(function (Module) {
+      Module.exec_ok = successCallback;
+    });
     return this;
   };
   /**
@@ -207,7 +221,9 @@ var zenroom = function () {
 
   var error = function error(errorCallback) {
     self.error = errorCallback;
-    C.exec_error = errorCallback;
+    C.then(function (Module) {
+      Module.exec_error = errorCallback;
+    });
     return this;
   };
   /**

@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+
 const C = require('../dist/lib/zenroom')
 
 /* istanbul ignore next */
@@ -148,7 +151,10 @@ const zenroom = (function () {
    */
   const print = function (printFunction) {
     self.print = printFunction
-    C.print = text => self.print(text)
+    C.then(Module => {
+      Module.print = text => self.print(text)
+    })
+    
     return this
   }
 
@@ -169,7 +175,9 @@ const zenroom = (function () {
    */
   const success = function (successCallback) {
     self.success = successCallback
-    C.exec_ok = successCallback
+    C.then(Module => {
+      Module.exec_ok = successCallback
+    })
     return this
   }
 
@@ -190,7 +198,9 @@ const zenroom = (function () {
    */
   const error = function (errorCallback) {
     self.error = errorCallback
-    C.exec_error = errorCallback
+    C.then(Module => {
+      Module.exec_error = errorCallback
+    })
     return this
   }
 
