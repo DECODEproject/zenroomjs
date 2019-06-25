@@ -14,15 +14,14 @@ Zenroomjs provides a javascript wrapper of <a href="https://zenroom.dyne.org">Ze
 </h4>
   
 <p align="center">
-	<a href="https://travis-ci.com/DECODEproject/zenroomjs">
-		<img src="https://travis-ci.com/DECODEproject/zenroomjs.svg?branch=master"
-			 alt="Build Status">
-	</a>
-	<a href="https://codecov.io/gh/DECODEproject/zenroomjs">
-	  <img src="https://codecov.io/gh/DECODEproject/zenroomjs/branch/master/graph/badge.svg" />
+  <a href="https://travis-ci.com/DECODEproject/zenroomjs">
+    <img src="https://travis-ci.com/DECODEproject/zenroomjs.svg?branch=master" alt="Build Status">
+  </a>
+  <a href="https://codecov.io/gh/DECODEproject/zenroomjs">
+    <img src="https://codecov.io/gh/DECODEproject/zenroomjs/branch/master/graph/badge.svg" />
   </a>
   <a href="https://badge.fury.io/js/zenroom">
-    <img src="https://badge.fury.io/js/zenroom.svg" alt="npm version" height="18">
+    <img alt="npm" src="https://img.shields.io/npm/v/zenroom.svg">
   </a>
   <a href="https://dyne.org">
     <img src="https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%9D%A4%20by-Dyne.org-blue.svg" alt="Dyne.org">
@@ -47,7 +46,7 @@ Zenroomjs provides a javascript wrapper of <a href="https://zenroom.dyne.org">Ze
 
 <br><br>
 
-:construction: Zenroom and Zenroomjs are software in **ALPHA stage** and are part of the [DECODE project](https://decodeproject.eu) about data-ownership and [technological sovereignty](https://www.youtube.com/watch?v=RvBRbwBm_nQ). Our effort is that of improving people's awareness of how their data is processed by algorithms, as well facilitate the work of developers to create along [privacy by design principles](https://decodeproject.eu/publications/privacy-design-strategies-decode-architecture) using algorithms that can be deployed in any situation without any change.
+:construction: Zenroom and Zenroomjs are part of the [DECODE project](https://decodeproject.eu) about data-ownership and [technological sovereignty](https://www.youtube.com/watch?v=RvBRbwBm_nQ). Our effort is that of improving people's awareness of how their data is processed by algorithms, as well facilitate the work of developers to create along [privacy by design principles](https://decodeproject.eu/publications/privacy-design-strategies-decode-architecture) using algorithms that can be deployed in any situation without any change.
 
 <br>
 </td></tr></table>
