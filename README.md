@@ -75,7 +75,7 @@ Another used paradigm is method chaining this means that you can chain the diffe
 import zenroom from 'zenroom'
 
 const script = `print("hello world from zenroom in nodejs")`
-zenroom.script(script).exec()
+zenroom.script(script).zenroom_exec()
 
 // prints in the console.log "hello world from zenroom in nodejs"
 ```
@@ -88,7 +88,7 @@ zenroom.script('print("hello world")')
        .verbosity(1)
        .success(() => { console.log('everything goes smooth') })
        .error(() => { console.error('something very bad happened') })
-       .exec()
+       .zenroom_exec()
        .reset() // cleans up the session
 ```
 
@@ -101,7 +101,7 @@ options = {
 	error: () => { console.error('something very bad happened') }
 }
 
-zenroom.init(options).exec()
+zenroom.init(options).zenroom_exec()
 ```
 
 All the available options and method are covered in the next API section
@@ -134,7 +134,7 @@ Example usage of `script()`
 import zenroom from 'zenroom'
 
 const script = 'print("hello")'
-zenroom.script(script).exec().reset()
+zenroom.script(script).zenroom_exec().reset()
 ```
 
 Returns **zenroom** the zenroom module
@@ -164,7 +164,7 @@ const script = `
 `
 
 const keys = {a: 1, b: 2}
-zenroom.script(script).keys(keys).exec().reset()
+zenroom.script(script).keys(keys).zenroom_exec().reset()
 ```
 
 Returns **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** the zenroom module
@@ -190,7 +190,7 @@ import zenroom from 'zenroom'
 
 const script = 'print("hello")'
 const conf = 'umm'
-zenroom.script(script).conf(conf).exec()
+zenroom.script(script).conf(conf).zenroom_exec()
 ```
 
 Returns **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** the zenroom module
@@ -220,7 +220,7 @@ const script = `
 `
 
 const data = {a: 1, b: 2}
-zenroom.script(script).data(data).exec()
+zenroom.script(script).data(data).zenroom_exec()
 ```
 
 Returns **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** the zenroom module
@@ -245,7 +245,7 @@ import zenroom from 'zenroom'
 const savedLines = []
 const printFunction = (text) => { savedLines.push(text) }
 const script = 'print("hello")'
-zenroom.print(printFunction).script(script).exec()
+zenroom.print(printFunction).script(script).zenroom_exec()
 ```
 
 Returns **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** the zenroom module
@@ -268,7 +268,7 @@ import zenroom from 'zenroom'
 const script = 'print("hello")'
 zenroom.script(script).success(()=>{
    pleaseRunSomeOtherMethodAfter()
-}).exec()
+}).zenroom_exec()
 ```
 
 Returns **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** the zenroom module
@@ -291,7 +291,7 @@ import zenroom from 'zenroom'
 const script = 'print("hello")';
 zenroom.script(script).error(()=>{
    pleaseRunSomeOtherMethodAfterError()
-}).exec()
+}).zenroom_exec()
 ```
 
 Returns **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** the zenroom module
@@ -323,12 +323,12 @@ import zenroom from 'zenroom'
 const script = 'print("hello")'
 zenroom.script(script).success(()=>{
    pleaseRunSomeOtherMethodAfter();
-}).exec()
+}).zenroom_exec()
 ```
 
 Returns **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** the zenroom module
 
-#### exec
+#### zenroom_exec
 
 Execute the zenroom vm (using the previously setted options)
 
@@ -338,7 +338,7 @@ executions in a row
 
 ##### Examples
 
-Example usage of `exec()`
+Example usage of `zenroom_exec()`
 
 
 ```javascript
@@ -346,7 +346,7 @@ Example usage of `exec()`
 import zenroom from 'zenroom'
 
 const script = 'print("hello")';
-zenroom.script(script).exec()
+zenroom.script(script).zenroom_exec()
 ```
 
 Returns **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** the zenroom module
@@ -416,7 +416,7 @@ const encrypt_secret_to_many = {
 }
 
 
-zenroom.init(encrypt_secret_to_many).exec()
+zenroom.init(encrypt_secret_to_many).zenroom_exec()
 ```
 
 Returns **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** the zenroom module
@@ -440,9 +440,9 @@ import zenroom from 'zenroom'
 
 const script = 'print("hello")';
 zenroom.script(script)
-       .exec()    // This runs the script
+       .zenroom_exec()    // This runs the script
        .reset()
-       .exec()    // This does not run the script anymore
+       .zenroom_exec()    // This does not run the script anymore
 ```
 
 Returns **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** the zenroom module
