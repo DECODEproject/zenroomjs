@@ -20,10 +20,13 @@ Zenroomjs provides a javascript wrapper of <a href="https://zenroom.dyne.org">Ze
 	</a>
 	<a href="https://codecov.io/gh/DECODEproject/zenroomjs">
 	  <img src="https://codecov.io/gh/DECODEproject/zenroomjs/branch/master/graph/badge.svg" />
-        </a>
-    <a href="https://dyne.org">
-        <img src="https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%9D%A4%20by-Dyne.org-blue.svg" alt="Dyne.org">
-    </a>
+  </a>
+  <a href="https://badge.fury.io/js/zenroom">
+    <img src="https://badge.fury.io/js/zenroom.svg" alt="npm version" height="18">
+  </a>
+  <a href="https://dyne.org">
+    <img src="https://img.shields.io/badge/%3C%2F%3E%20with%20%E2%9D%A4%20by-Dyne.org-blue.svg" alt="Dyne.org">
+  </a>
 </p>
 
 <br><br>
@@ -72,8 +75,8 @@ Another used paradigm is method chaining this means that you can chain the diffe
 ```js
 import zenroom from 'zenroom'
 
-const zencode = `print("hello world from zenroom in nodejs")`
-zenroom.zencode(zencode).exec()
+const script = `print("hello world from zenroom in nodejs")`
+zenroom.script(script).exec()
 
 // prints in the console.log "hello world from zenroom in nodejs"
 ```
@@ -82,7 +85,7 @@ To initialize the options there are two ways, the one with the chaining that we 
 
 ```js
 // method chaining
-zenroom.zencode('print("hello world")')
+zenroom.script('print("hello world")')
        .verbosity(1)
        .success(() => { console.log('everything goes smooth') })
        .error(() => { console.error('something very bad happened') })
@@ -93,7 +96,7 @@ zenroom.zencode('print("hello world")')
 ```js
 // using the init() method
 options = {
-	zencode: 'print("hello world")',
+	script: 'print("hello world")',
 	verbosity: 1,
 	success: () => { console.log('everything goes smooth') },
 	error: () => { console.error('something very bad happened') }
