@@ -51,7 +51,7 @@ const zenroom = (function () {
    * import zenroom from 'zenroom'
    *
    * const script = 'print("hello")'
-   * zenroom.script(script).exec().reset()
+   * zenroom.script(script).zenroom_exec().reset()
    *
    * @param {string} script the lua script to be set
    * @returns {zenroom} the zenroom module
@@ -76,7 +76,7 @@ const zenroom = (function () {
    * `
    *
    * const keys = {a: 1, b: 2}
-   * zenroom.script(script).keys(keys).exec().reset()
+   * zenroom.script(script).keys(keys).zenroom_exec().reset()
    *
    * @param {object} keys the keys to be set as an object
    * @returns {object} the zenroom module
@@ -97,7 +97,7 @@ const zenroom = (function () {
    *
    * const script = 'print("hello")'
    * const conf = 'umm'
-   * zenroom.script(script).conf(conf).exec()
+   * zenroom.script(script).conf(conf).zenroom_exec()
    *
    * @param {string} conf the string of configuration to be set
    * @returns {object} the zenroom module
@@ -122,7 +122,7 @@ const zenroom = (function () {
    * `
    *
    * const data = {a: 1, b: 2}
-   * zenroom.script(script).data(data).exec()
+   * zenroom.script(script).data(data).zenroom_exec()
    *
    * @param {string} data
    * @returns {object} the zenroom module
@@ -144,7 +144,7 @@ const zenroom = (function () {
    * const savedLines = []
    * const printFunction = (text) => { savedLines.push(text) }
    * const script = 'print("hello")'
-   * zenroom.print(printFunction).script(script).exec()
+   * zenroom.print(printFunction).script(script).zenroom_exec()
    *
    * @callback print
    * @returns {object} the zenroom module
@@ -168,7 +168,7 @@ const zenroom = (function () {
    * const script = 'print("hello")'
    * zenroom.script(script).success(()=>{
    *    pleaseRunSomeOtherMethodAfter()
-   * }).exec()
+   * }).zenroom_exec()
    *
    * @callback success
    * @returns {object} the zenroom module
@@ -191,7 +191,7 @@ const zenroom = (function () {
    * const script = 'print("hello")';
    * zenroom.script(script).error(()=>{
    *    pleaseRunSomeOtherMethodAfterError()
-   * }).exec()
+   * }).zenroom_exec()
    *
    * @callback error
    * @returns {object} the zenroom module
@@ -221,7 +221,7 @@ const zenroom = (function () {
    * const script = 'print("hello")'
    * zenroom.script(script).success(()=>{
    *    pleaseRunSomeOtherMethodAfter();
-   * }).exec()
+   * }).zenroom_exec()
    *
    * @param {number} verbosity
    * @returns {object} the zenroom module
@@ -238,16 +238,16 @@ const zenroom = (function () {
    * the zenroom module itself, so can be used for other calls if you need to make more
    * executions in a row
    *
-   * @example <caption>Example usage of `exec()`</caption>
+   * @example <caption>Example usage of `zenroom_exec()`</caption>
    * // returns zenroom
    * import zenroom from 'zenroom'
    *
    * const script = 'print("hello")';
-   * zenroom.script(script).exec()
+   * zenroom.script(script).zenroom_exec()
    *
    * @returns {object} the zenroom module
    */
-  const exec = function () {
+  const zenroom_exec = function () {
     zenroomExec(self.script, self.conf, self.keys, self.data, self.verbosity)
     return this
   }
@@ -306,7 +306,7 @@ const zenroom = (function () {
    * }
    *
    *
-   * zenroom.init(encrypt_secret_to_many).exec()
+   * zenroom.init(encrypt_secret_to_many).zenroom_exec()
    *
    * @returns {object} the zenroom module
    */
@@ -345,9 +345,9 @@ const zenroom = (function () {
    *
    * const script = 'print("hello")';
    * zenroom.script(script)
-   *        .exec()    // This runs the script
+   *        .zenroom_exec()    // This runs the script
    *        .reset()
-   *        .exec()    // This does not run the script anymore
+   *        .zenroom_exec()    // This does not run the script anymore
    *
    * @returns {object} the zenroom module
    */
@@ -368,7 +368,7 @@ const zenroom = (function () {
     print,
     success,
     verbosity,
-    exec,
+    zenroom_exec,
     error,
     init,
     reset,

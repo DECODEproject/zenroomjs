@@ -58,7 +58,7 @@ describe('Zenroom module', function () {
 
   it('should zenroom have exposed all public method', function () {
     const z = zenroom.init()
-    expect(z).to.be.an('object').to.have.all.keys('conf data exec error init keys print success verbosity script __debug reset'.split(' '))
+    expect(z).to.be.an('object').to.have.all.keys('conf data zenroom_exec error init keys print success verbosity script __debug reset'.split(' '))
   })
 
   it('should zenroom initialize script', function () {
@@ -67,13 +67,13 @@ describe('Zenroom module', function () {
   })
 
   it('should zenroom exec script', function () {
-    const z = zenroom.script('print("one script")').exec()
+    const z = zenroom.script('print("one script")').zenroom_exec()
     expect(z).to.be.an('object')
     expect(console.log.calledWithExactly('one script')).to.be.true
   })
 
   it('should zenroom execute script with init', function () {
-    zenroom.init({ script: 'print("exec with init")' }).exec()
+    zenroom.init({ script: 'print("exec with init")' }).zenroom_exec()
     expect(console.log.calledOnce).to.be.true
   })
 
@@ -82,7 +82,7 @@ describe('Zenroom module', function () {
       .script(encrypt_secret_to_many.script)
       .keys(encrypt_secret_to_many.keys)
       .data(encrypt_secret_to_many.data)
-      .exec()
+      .zenroom_exec()
     const result = JSON.parse(console.log.args[0][0])
     expect(result).to.have.all.keys('paulus mayo mark jim jaromil francesca'.split(' '))
     expect(console.log.calledOnce).to.be.true
@@ -131,7 +131,7 @@ describe('Zenroom module', function () {
     const error = () => {
       errorExecuted = true
     }
-    zenroom.script(script).error(error).exec()
+    zenroom.script(script).error(error).zenroom_exec()
     expect(errorExecuted).to.be.true
   })
 
@@ -148,7 +148,7 @@ describe('Zenroom module', function () {
     zenroom.init({
       script: 'broken script on purpose',
       error: () => { errorExecuted = true }
-    }).exec()
+    }).zenroom_exec()
     expect(errorExecuted).to.be.true
   })
 
@@ -158,7 +158,7 @@ describe('Zenroom module', function () {
     const success = () => {
       executed = true
     }
-    zenroom.script(script).success(success).exec()
+    zenroom.script(script).success(success).zenroom_exec()
     expect(executed).to.be.true
   })
 })
