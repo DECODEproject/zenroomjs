@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import "core-js/stable";
-import "regenerator-runtime/runtime";
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
 
 const C = require('../dist/lib/zenroom')
 
@@ -166,7 +166,7 @@ const zenroom = (function () {
     C.then(Module => {
       Module.print = text => self.print(text)
     })
-    
+
     return this
   }
 

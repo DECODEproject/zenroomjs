@@ -32,6 +32,8 @@ require("regenerator-runtime/runtime");
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var MAX_BUFFER_SIZE = 1048576;
+
 var C = require('../dist/lib/zenroom');
 /* istanbul ignore next */
 
