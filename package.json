@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "https://github.com/puria/zenroomjs.git",
   "author": "Puria Nafisi Azizi <puria@dyne.org>",
-  "license": "Apache-2.0",
+  "license": "AGPL-3.0",
   "scripts": {
     "lint": "npx standard",
     "build": "cd zenroom && make javascript-npm",
