@@ -64,6 +64,12 @@ yarn add zenroom
 To start using the zenroom module just
 
 ```js
+const zenroom = require('zenroom').default
+```
+
+or with ES6 syntax:
+
+```js
 import zenroom from 'zenroom'
 ```
 
@@ -73,6 +79,8 @@ Another used paradigm is method chaining this means that you can chain the diffe
 
 ```js
 import zenroom from 'zenroom'
+// or without es6 syntax
+// const zenroom = require('zenroom').default
 
 const script = `print("hello world from zenroom in nodejs")`
 zenroom.script(script).zenroom_exec()
@@ -132,6 +140,8 @@ Example usage of `script()`
 ```javascript
 // returns zenroom
 import zenroom from 'zenroom'
+// or without ES6 syntax
+// const zenroom = require('zenroom').default
 
 const script = 'print("hello")'
 zenroom.script(script).zenroom_exec().reset()
@@ -157,6 +167,8 @@ Example usage of `keys()`
 ```javascript
 // returns zenroom
 import zenroom from 'zenroom'
+// or without ES6 syntax
+// const zenroom = require('zenroom').default
 
 const script = `
                  keys = JSON.decode(KEYS)
@@ -187,6 +199,8 @@ Example usage of `conf()`
 ```javascript
 // returns zenroom
 import zenroom from 'zenroom'
+// or without ES6 syntax
+// const zenroom = require('zenroom').default
 
 const script = 'print("hello")'
 const conf = 'umm'
@@ -213,6 +227,8 @@ Example usage of `data()`
 ```javascript
 // returns zenroom
 import zenroom from 'zenroom'
+// or without ES6 syntax
+// const zenroom = require('zenroom').default
 
 const script = `
                  data = JSON.decode(DATA)
@@ -241,6 +257,8 @@ Example usage of `print()`
 ```javascript
 // returns zenroom
 import zenroom from 'zenroom'
+// or without ES6 syntax
+// const zenroom = require('zenroom').default
 
 const savedLines = []
 const printFunction = (text) => { savedLines.push(text) }
@@ -264,6 +282,8 @@ Example usage of `success()`
 ```javascript
 // returns zenroom
 import zenroom from 'zenroom'
+// or without ES6 syntax
+// const zenroom = require('zenroom').default
 
 const script = 'print("hello")'
 zenroom.script(script).success(()=>{
@@ -287,6 +307,8 @@ Example usage of `error()`
 ```javascript
 // returns zenroom
 import zenroom from 'zenroom'
+// or without ES6 syntax
+// const zenroom = require('zenroom').default
 
 const script = 'print("hello")';
 zenroom.script(script).error(()=>{
@@ -319,6 +341,8 @@ Example usage of `success`
 ```javascript
 // returns zenroom
 import zenroom from 'zenroom'
+// or without ES6 syntax
+// const zenroom = require('zenroom').default
 
 const script = 'print("hello")'
 zenroom.script(script).success(()=>{
@@ -344,9 +368,36 @@ Example usage of `zenroom_exec()`
 ```javascript
 // returns zenroom
 import zenroom from 'zenroom'
+// or without ES6 syntax
+// const zenroom = require('zenroom').default
 
 const script = 'print("hello")';
 zenroom.script(script).zenroom_exec()
+```
+
+Returns **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** the zenroom module
+
+#### zencode_exec
+
+Execute zencode contracts (using the previously setted options)
+
+It is usually the last method of the chain, but like the other methods returns
+the zenroom module itself, so can be used for other calls if you need to make more
+executions in a row
+
+##### Examples
+
+Example usage of `zencode_exec()`
+
+
+```javascript
+// returns zenroom
+import zenroom from 'zenroom'
+// or without ES6 syntax
+// const zenroom = require('zenroom').default
+
+const zencode = 'print("hello")';
+zenroom.script(script).zencode_exec()
 ```
 
 Returns **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** the zenroom module
@@ -383,6 +434,8 @@ Example usage of `init()`
 ```javascript
 // returns zenroom
 import zenroom from 'zenroom'
+// or without ES6 syntax
+// const zenroom = require('zenroom').default
 
 const encrypt_secret_to_many = {
  script: `keyring = ECDH.new()
@@ -437,6 +490,8 @@ Example usage of `reset()`
 ```javascript
 // returns zenroom
 import zenroom from 'zenroom'
+// or without ES6 syntax
+// const zenroom = require('zenroom').default
 
 const script = 'print("hello")';
 zenroom.script(script)
