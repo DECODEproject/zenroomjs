@@ -335,7 +335,7 @@ As per now the set of accepted value:
 
 ##### Examples
 
-Example usage of `success`
+Example usage of `verbosity()`
 
 
 ```javascript
@@ -345,9 +345,7 @@ import zenroom from 'zenroom'
 // const zenroom = require('zenroom').default
 
 const script = 'print("hello")'
-zenroom.script(script).success(()=>{
-   pleaseRunSomeOtherMethodAfter();
-}).zenroom_exec()
+zenroom.script(script).verbosity(2).zenroom_exec()
 ```
 
 Returns **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** the zenroom module
