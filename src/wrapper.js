@@ -240,16 +240,14 @@ const zenroom = (function () {
    * <li>2 = DEBUG</li>
    * </ul>
    *
-   * @example <caption>Example usage of `success`</caption>
+   * @example <caption>Example usage of `verbosity()`</caption>
    * // returns zenroom
    * import zenroom from 'zenroom'
    * // or without ES6 syntax
    * // const zenroom = require('zenroom').default
    *
    * const script = 'print("hello")'
-   * zenroom.script(script).success(()=>{
-   *    pleaseRunSomeOtherMethodAfter();
-   * }).zenroom_exec()
+   * zenroom.script(script).verbosity(2).zenroom_exec()
    *
    * @param {number} verbosity
    * @returns {object} the zenroom module
